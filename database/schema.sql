@@ -1,0 +1,2 @@
+-- MySQL schema for LeadFlow CRM
+-- Create tables here

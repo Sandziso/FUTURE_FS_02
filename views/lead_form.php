@@ -1,0 +1,3 @@
+<?php
+// Lead form view
+?>

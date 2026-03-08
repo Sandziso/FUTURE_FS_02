@@ -1,0 +1,3 @@
+<?php
+// Leads table view
+?>

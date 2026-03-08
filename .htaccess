@@ -1,0 +1,35 @@
+# Disable directory browsing (prevents listing of folders)
+Options -Indexes
+
+# Protect hidden files (like .git, .env) – deny access to any file starting with a dot
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Block direct access to sensitive directories
+# (users can still access PHP scripts inside these folders via includes, not directly)
+RedirectMatch 403 ^/includes/.*$
+RedirectMatch 403 ^/config/.*$
+RedirectMatch 403 ^/controllers/.*$
+RedirectMatch 403 ^/models/.*$
+RedirectMatch 403 ^/vendor/.*$
+
+# Allow access to the public folder (CSS, JS, images)
+# (if you store assets in public/, this rule is not needed unless you want extra safety)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # If the request is for a real file or directory in public/, serve it directly
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+</IfModule>
+
+# Optional: Set default character set
+AddDefaultCharset UTF-8
+
+# Optional: Security headers (uncomment if mod_headers is enabled)
+# <IfModule mod_headers.c>
+#     Header set X-Content-Type-Options "nosniff"
+#     Header set X-Frame-Options "SAMEORIGIN"
+#     Header set X-XSS-Protection "1; mode=block"
+# </IfModule>

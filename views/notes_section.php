@@ -1,0 +1,3 @@
+<?php
+// Notes section view
+?>

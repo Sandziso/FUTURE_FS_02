@@ -1,0 +1,485 @@
+/* admin/css/admin.css – Modern CRM Theme */
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary: #64748b;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --light: #f8fafc;
+    --dark: #1e293b;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+
+    --sidebar-width: 260px;
+    --sidebar-bg: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --transition: all 0.2s ease-in-out;
+    --border-radius: 0.75rem;
+    --border-radius-sm: 0.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gray-100);
+    color: var(--gray-800);
+    line-height: 1.6;
+}
+
+#wrapper {
+    display: flex;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+#sidebar-wrapper {
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    transition: margin 0.3s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: calc(-1 * var(--sidebar-width));
+}
+
+#page-content-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ----- Sidebar ----- */
+.sidebar {
+    min-height: 100vh;
+    background: var(--sidebar-bg);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    padding: 1.75rem 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.sidebar-brand i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.85rem 1.5rem;
+    margin: 0.25rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sidebar .nav-link i {
+    font-size: 1.25rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.sidebar-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+}
+
+/* Sidebar toggle button */
+#sidebarToggle {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#sidebarToggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ----- Topbar ----- */
+.topbar {
+    height: 4.5rem;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 0 1.5rem;
+}
+
+.topbar .dropdown-toggle::after {
+    display: none;
+}
+
+/* Notifications badge */
+.badge-counter {
+    position: relative;
+    top: -10px;
+    right: 5px;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+}
+
+/* ----- Cards ----- */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-3px);
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid var(--gray-200);
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+}
+
+.card-header:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Stat cards with left border */
+.border-left-primary {
+    border-left: 0.35rem solid var(--primary) !important;
+}
+.border-left-success {
+    border-left: 0.35rem solid var(--success) !important;
+}
+.border-left-info {
+    border-left: 0.35rem solid var(--info) !important;
+}
+.border-left-warning {
+    border-left: 0.35rem solid var(--warning) !important;
+}
+
+/* Stat card icons */
+.card .col-auto i {
+    font-size: 2.5rem;
+    color: var(--gray-300);
+    transition: var(--transition);
+}
+
+.card:hover .col-auto i {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+/* ----- Tables ----- */
+.table {
+    background-color: white;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: var(--gray-800);
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-bottom: none;
+    padding: 1rem 0.75rem;
+}
+
+.table tbody tr {
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.table td {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+
+    .table, .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--gray-300);
+        border-radius: var(--border-radius-sm);
+        padding: 0.5rem;
+    }
+
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid var(--gray-200);
+        padding: 0.5rem;
+    }
+
+    .table td:last-child {
+        border-bottom: none;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--gray-700);
+        margin-right: 1rem;
+    }
+}
+
+/* ----- Status Badges ----- */
+.badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.75em;
+    font-weight: 600;
+    border-radius: 50rem;
+    text-transform: capitalize;
+}
+
+.badge.bg-primary {
+    background-color: var(--primary) !important;
+    color: white;
+}
+
+.badge.bg-warning {
+    background-color: var(--warning) !important;
+    color: var(--gray-900);
+}
+
+.badge.bg-success {
+    background-color: var(--success) !important;
+    color: white;
+}
+
+.badge.bg-danger {
+    background-color: var(--danger) !important;
+    color: white;
+}
+
+.badge.bg-info {
+    background-color: var(--info) !important;
+    color: white;
+}
+
+.badge.bg-secondary {
+    background-color: var(--secondary) !important;
+    color: white;
+}
+
+/* Alternatively, if using the custom status classes from style.css */
+.status-new {
+    background-color: #cff4fc;
+    color: #055160;
+}
+.status-contacted {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+.status-converted {
+    background-color: #d1e7dd;
+    color: #0a3622;
+}
+
+/* ----- Buttons ----- */
+.btn {
+    border-radius: var(--border-radius-sm);
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+.btn-success {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #0ea271;
+    border-color: #0ea271;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* ----- Activity log (list group) ----- */
+.list-group {
+    border-radius: var(--border-radius-sm);
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid var(--gray-200);
+    padding: 1rem 1.25rem;
+    transition: var(--transition);
+}
+
+.list-group-item:hover {
+    background-color: var(--gray-100);
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* ----- Loading overlay ----- */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner-overlay.show {
+    display: flex;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: var(--primary);
+}
+
+/* ----- Mini Kanban cards (status summary) ----- */
+.card.bg-light {
+    background-color: white !important;
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--card-shadow);
+}
+
+.card.bg-light .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card.bg-light h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+/* ----- Responsive adjustments ----- */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: calc(-1 * var(--sidebar-width));
+        position: fixed;
+        height: 100vh;
+        z-index: 1050;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+    }
+    #page-content-wrapper {
+        width: 100%;
+    }
+    .topbar {
+        padding: 0 1rem;
+    }
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ----- Animations ----- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.row > .col, .row > [class*="col-"] {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ----- Chart containers ----- */
+canvas {
+    max-height: 300px;
+    width: 100% !important;
+}
